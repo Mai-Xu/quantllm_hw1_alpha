@@ -175,3 +175,10 @@ projects/alpha_mining_demo/：eval_factors.py 基于 vnpy.alpha（AlphaDataset +
 - 复跑 highpos 逐位一致；rev/pos 窗均为平台；四件套 amp 增强 valid 0.309 作观察项
 - 产物 runs/volpos_round_01..04 + runs/final（gap 归档至 final_gap/）；wiki/code/alpha-mining-demo-notes.md 增「第五次实测」节
 - 台账 volpos 51/80；同段 valid 累计 gap 56 + volpos 51 = 107
+
+## [2026-09-30] dev | 项目整理并发布 GitHub
+- 清理：删 23 个 wiki 备份、demo 备份、__pycache__、CTP flow 流文件目录
+- 补足：顶层 README.md（学习主线/快速开始/复现指引）；.gitignore 重写（raw/ 与 runs/cache 224MB pkl 排除，挖掘报告/协议/笔记/图表入库）；index 链入 VOLPOS 报告
+- 发布：git init + 初始提交 68513df（165 文件）→ 公开仓库 https://github.com/Mai-Xu/quantllm_hw1_alpha
+- 认证：winget 安装 gh 2.102.0；网络走本机代理 127.0.0.1:7890；账号 Mai-Xu（HTTPS 协议）
+- 机密核查：入库文件无密码字面量；SimNow 密码仍走环境变量 Mai_SimNow_passward

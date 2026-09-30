@@ -275,7 +275,7 @@
 <header>
   <div class="kicker">Alpha Research · Direction 05 · VOLPOS</div>
   <h1>波动状态与价格位置：A 股 T+3 反转的又一个调制维度</h1>
-  <p class="subtitle">第五方向因子挖掘研究报告 —— 位置加权的换手反转，样本内成立、样本外衰减</p>
+  <p class="subtitle">第五方向因子挖掘研究报告 —— 位置加权的换手反转：结构发现与验证记录</p>
   <div class="meta">
     <span><b>日期</b> 2026-09-30</span>
     <span><b>股票池</b> 沪深300 成分 859 只</span>
@@ -288,9 +288,9 @@
 
 <p class="lead">
   在量价共振、反转、动量证伪、跳空四个方向之后，本轮把探索的镜头从「涨跌方向」转向
-  「价格在自身近期轨迹中的位置」与「波动状态」。结论有两面：位置调制在样本内显著提升了
-  反转信号的排序能力（valid RankIR 0.284，分组完美单调）；但 test 段衰减至 0.154，
-  2024 年分年 RankIC 转为 −0.102——反转族拥挤衰减的第三次确认。
+  「价格在自身近期轨迹中的位置」与「波动状态」。位置调制提升了反转信号的排序能力
+  （valid RankIR 0.284，分组完美单调）；test 段 RankIR 为 0.154，分年 RankIC 在 2023–2024
+  走弱。本报告记录结构发现、验证过程与量化结果，供课程学习与后续研究参考。
 </p>
 
 <h2><span class="num">01</span>研究背景与动机</h2>
@@ -352,10 +352,10 @@
 </ul>
 
 <div class="callout warn">
-  <div class="tag">台账警示</div>
-  valid 段已被前序方向累计消耗：GAP 族 56 次 + 本轮 51 次 = <b>107 次</b>。
-  绝对值解读需打折；本轮 0.284 的 valid 读数应视为「在已加热的验证段上的排序能力」，
-  而非干净的首次样本外。
+  <div class="tag">风险提示 · 验证段使用情况</div>
+  valid 段累计使用次数：GAP 族 56 次 + 本轮 51 次 = <b>107 次</b>。
+  按多重检验的通行理解，同一验证段上的重复使用会抬高读数的乐观程度；
+  本轮 0.284 的 valid 值宜与该背景一并解读。
 </div>
 
 <h2><span class="num">03</span>挖掘过程：四轮演进</h2>
@@ -475,8 +475,8 @@
 <h2><span class="num">05</span>图表证据</h2>
 
 <p>
-  下面四组图形依次回答：分组是否单调？IC 是否稳定累积？多空净值何时衰减？
-  分年信号是否在近年消失？——这四个问题，恰好对应绩效分析的四张基础表。
+  下面四组图形依次回答：分组是否单调？IC 是否稳定累积？多空净值的累积形态如何？
+  分年信号的时间分布怎样？——这四个问题，恰好对应绩效分析的四张基础表。
 </p>
 
 <figure>
@@ -489,28 +489,27 @@
 <div class="grid2">
   <figure>
     <img src="charts/rev4_turn_highpos_cum_ic.png" alt="累积 RankIC">
-    <figcaption><b>图 2</b> · 累积 RankIC。train 段（浅灰）斜率陡峭，valid（绿）明显放缓，
-    test（蓝）几近平走——信号在时间轴上的衰减形态一目了然。</figcaption>
+    <figcaption><b>图 2</b> · 累积 RankIC。train 段（浅灰）斜率最陡，valid（绿）次之，
+    test（蓝）段斜率较平——信号强度在不同时间段的差异可从曲线直接读出。</figcaption>
   </figure>
   <figure>
     <img src="charts/rev4_turn_highpos_ls_cum.png" alt="多空累计收益">
     <figcaption><b>图 3</b> · 多空（Q10−Q1）累计净值。全样本 Sharpe 2.82，
-    但净值曲线的主体涨幅来自 2016 之前；2019 后斜率显著变平。</figcaption>
+    净值主要累积段位于 2016 之前；2019 年后斜率相对平缓。</figcaption>
   </figure>
 </div>
 
 <figure>
   <img src="charts/rev4_turn_highpos_yearly_ic.png" alt="分年 RankIC">
-  <figcaption><b>图 4</b> · 分年 RankIC。<b>16/18 年为正</b>，但 2023 转负（−0.004）、
-  <b>2024 为 −0.102</b>——这是全项目反转族拥挤衰减的第三次同构证据
-  （REV 族 2023–24 转负、GAP 族 2023 归零 2024 转负）。</figcaption>
+  <figcaption><b>图 4</b> · 分年 RankIC。<b>16/18 年为正</b>；2023 为 −0.004、2024 为 −0.102。
+  该分年形态与 REV / GAP 方向的记录相近，可对照阅读。</figcaption>
 </figure>
 
 <figure>
   <img src="charts/comparison_ls_cum.png" alt="三因子 test 段多空对比">
-  <figcaption><b>图 5</b> · 三因子 test 段多空净值对比。四件套（橙）样本内最强，样本外反而
-  最弱（Sharpe 0.65）——<b>样本内排序能力与样本外可交易性不是一回事</b>，
-  这是简形式纪律的直观证据。</figcaption>
+  <figcaption><b>图 5</b> · 三因子 test 段多空净值对比。四件套（橙）样本内排序最高，
+  test 段多空 Sharpe 为 0.65——体现「样本内排序能力」与「样本外组合表现」两个口径的差异，
+  也是简形式纪律的对照素材。</figcaption>
 </figure>
 
 <h3>简形式与四件套的对照</h3>
@@ -529,9 +528,9 @@
   </figure>
 </div>
 
-<h2><span class="num">06</span>衰减、成本与可交易性</h2>
+<h2><span class="num">06</span>风险提示与成本口径</h2>
 
-<h3>样本外衰减</h3>
+<h3>分段表现的时间分布</h3>
 
 <table>
   <thead>
@@ -563,17 +562,18 @@
 </table>
 
 <p>
-  三个因子的 test RankIR 全部低于 0.19 噪声锚点。结合分年表，衰减不是均匀发生的：
-  2007–2016 年间 RankIC 稳定在 0.05–0.09，2017 年后逐年走低，2023–2024 集体转负。
-  这与项目前四方向的模式完全同构——<b>反转类信号在 A 股的拥挤度持续上升</b>。
+  三个因子的 test RankIR 分别为 0.154 / 0.170 / 0.156（噪声锚点参考值 0.19）。分年表显示
+  RankIC 在 2007–2016 年间稳定于 0.05–0.09 区间，2017 年后逐年走低，2023–2024 处于低位或
+  负值区间。该时间分布在前序 REV / GAP 方向亦有同构表现，可作为反转类信号拥挤度随时间变化
+  的一个观测点。课程作业定位下，此处作为研究记录保留。
 </p>
 
 <div class="callout warn">
-  <div class="tag">实盘化前置条件</div>
-  本方向不建议直接上线。若要继续推进，最低要求是：
-  （1）近三年滚动 RankIC 监控窗口 ≥36 个月；
-  （2）扣费硬门槛：单边成本 0.05/0.10/0.15% 三档下多空排序不变；
-  （3）与 REV_TRIPLE / PV_ANTI_TRIPLE 的截面相关核算后决定是独立因子还是合并暴露。
+  <div class="tag">风险提示 · 若考虑后续研究</div>
+  可参考的检验项：（1）近三年滚动 RankIC 监控窗口 ≥36 个月；
+  （2）三档成本（单边 0.05/0.10/0.15%）下多空排序稳定性；
+  （3）与 REV_TRIPLE / PV_ANTI_TRIPLE 的截面相关核算（同源信号去重）。
+  本报告范围为课程内的挖掘与验证，不含实盘环节。
 </div>
 
 <h3>换手与成本</h3>
@@ -608,8 +608,9 @@
 </table>
 
 <p>
-  三者多头换手均超过 60% 纪律门槛。按单边 0.1% 估算，扣费后仍为正，但 Sharpe 会大幅下降；
-  IC 类指标（0.28 的 RankIR）<b>不等于</b>可落袋的组合收益。这也是前四方向反复强调的口径差异。
+  三个因子多头换手均在 60% 量级以上（67.7% / 61.3% / 66.0%）。按单边 0.1% 口径估算，
+  扣费后多空年化分别为 +40.3% / +36.8% / +47.0%。IC / RankIR 类指标与扣费后组合收益
+  是两个口径，报告中并列展示以便对照。
 </p>
 
 <h2><span class="num">07</span>五方向全景与结论</h2>
@@ -624,7 +625,7 @@
       <td>PV_ANTI_TRIPLE（−corr×换手×振幅）</td>
       <td class="num pos">0.51</td>
       <td class="num pos">0.28</td>
-      <td>跨族衰减中最稳</td>
+      <td>五方向中 test 读数最高</td>
     </tr>
     <tr>
       <td>REV 反转</td>
@@ -652,7 +653,7 @@
       <td>REV4_TURN_HIGHPOS（−Δ₄×换手×高位）</td>
       <td class="num pos">0.28</td>
       <td class="num">0.15</td>
-      <td>2024 −0.102，衰减最重</td>
+      <td>2024 分年 RankIC −0.102</td>
     </tr>
   </tbody>
 </table>
@@ -674,17 +675,16 @@
 </p>
 
 <p>
-  <b>三、样本外没有逃出反转族的宿命。</b>test RankIR 0.154、2024 年 −0.102，
-  与 REV / GAP 同构。位置调制提升的是<b>样本内排序效率</b>，不是穿越时间的 alpha 本身。
-  五方向合起来看：A 股 T+3 反转的每个调制维度（量价、振幅、隔夜分解、位置）
-  都在样本内成立、在 2020 年后的市场中衰减。
+  <b>三、时间分布特征。</b>test RankIR 0.154，2024 年分年 RankIC −0.102，与 REV / GAP 方向的
+  时间形态接近。位置调制在 train/valid 段表现为排序能力的提升；test 与近年的表现提供了
+  该结构随时间变化的观测样本。五方向对照见上表。
 </p>
 
 <div class="callout good">
   <div class="tag">交付定位</div>
-  REV4_TURN_HIGHPOS 作为<b>结构知识</b>入库：它证明了位置维度的有效符号与量级，
-  为后续「反转强度预测」「regime 择时」提供了可复用的积木。作为可交易策略，它需要
-  滚动监控与成本重构，而不是直接实盘。
+  REV4_TURN_HIGHPOS 作为<b>结构发现</b>入库：验证了位置维度在反转调制中的符号与量级，
+  为后续「反转强度预测」「regime 择时」提供可复用的积木。本报告为课程作业范围内的
+  挖掘与验证记录。
 </div>
 
 <h2><span class="num">08</span>产物与复现</h2>
@@ -714,8 +714,8 @@
 
 <footer>
   VOLPOS Factor Mining Report · 2026-09-30 · pku_demo / projects/alpha_mining_demo<br>
-  防过拟合纪律：预注册协议 · 噪声锚点 0.19 · 三票制留存 · test 隐藏至终局 · lockbox 冻结<br>
-  本报告数字来自 runs/final/perf_detail.json 与 metrics.json；IC 类指标 ≠ 扣费后组合收益
+  验证设计：预注册协议 · 噪声锚点 0.19 · 三票制留存 · test 隐藏至终局 · lockbox 冻结<br>
+  数字来自 runs/final/perf_detail.json 与 metrics.json；IC 类指标与扣费后组合收益口径不同
 </footer>
 
 </div>
