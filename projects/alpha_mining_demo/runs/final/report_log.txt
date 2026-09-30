@@ -1,0 +1,48 @@
+用 vnpy.alpha 计算 3 个留存因子 ...
+使用缓存数据集 F:\004大学学业资料\大二下-大三下\量化交易\20260918北京大学-VeighNa量化平台-课件代码\pku_demo\projects\alpha_mining_demo\runs\cache\base_dataset.pkl（若修改过数据区间/成分股，请删除该文件后重建）
+[32m2026-09-30 17:16:57[0m [1m开始计算表达式因子特征[0m
+
+  0%|          | 0/4 [00:00<?, ?it/s]
+ 25%|██▌       | 1/4 [00:03<00:09,  3.10s/it]
+ 50%|█████     | 2/4 [00:03<00:03,  1.68s/it]
+ 75%|███████▌  | 3/4 [01:44<00:46, 46.83s/it]
+100%|██████████| 4/4 [01:44<00:00, 26.09s/it]
+Feature calculation rev4_turn_highpos took: 0.3323678970336914 seconds | -ts_delta(close, 4) / close * cs_rank(turnover) * ((close - ts_min(close, 20)) / (ts_max(close, 20) - ts_min(close, 20)))
+Feature calculation rev4_turn took: 0.18567156791687012 seconds | -ts_delta(close, 4) / close * cs_rank(turnover)
+Feature calculation label took: 0.11407065391540527 seconds | ts_delay(close, -3) / ts_delay(close, -1) - 1
+Feature calculation rev4_turn_pos20_amp took: 100.1883819103241 seconds | -ts_delta(close, 4) / close * cs_rank(turnover) * ((close - ts_min(close, 20)) / (ts_max(close, 20) - ts_min(close, 20))) * cs_rank(ts_mean((high - low) / close, 20))
+[32m2026-09-30 17:18:42[0m [1m开始合并结果数据因子特征[0m
+
+0it [00:00, ?it/s]
+0it [00:00, ?it/s]
+[32m2026-09-30 17:18:42[0m [1m开始筛选成分股数据[0m
+
+  0%|          | 0/819 [00:00<?, ?it/s]
+  5%|▌         | 42/819 [00:00<00:01, 414.06it/s]
+ 11%|█         | 88/819 [00:00<00:01, 436.64it/s]
+ 17%|█▋        | 138/819 [00:00<00:01, 464.43it/s]
+ 23%|██▎       | 185/819 [00:00<00:01, 456.83it/s]
+ 28%|██▊       | 233/819 [00:00<00:01, 464.50it/s]
+ 34%|███▍      | 280/819 [00:00<00:01, 465.19it/s]
+ 40%|███▉      | 327/819 [00:00<00:01, 420.57it/s]
+ 46%|████▌     | 375/819 [00:00<00:01, 436.37it/s]
+ 51%|█████▏    | 421/819 [00:00<00:00, 442.30it/s]
+ 58%|█████▊    | 472/819 [00:01<00:00, 461.48it/s]
+ 63%|██████▎   | 519/819 [00:01<00:00, 439.33it/s]
+ 69%|██████▉   | 564/819 [00:01<00:00, 426.73it/s]
+ 74%|███████▍  | 608/819 [00:01<00:00, 427.62it/s]
+ 80%|███████▉  | 652/819 [00:01<00:00, 415.14it/s]
+ 85%|████████▌ | 700/819 [00:01<00:00, 429.06it/s]
+ 91%|█████████ | 744/819 [00:01<00:00, 419.83it/s]
+ 96%|█████████▌| 787/819 [00:01<00:00, 418.16it/s]
+100%|██████████| 819/819 [00:01<00:00, 434.04it/s]
+F:\004大学学业资料\大二下-大三下\量化交易\20260918北京大学-VeighNa量化平台-课件代码\pku_demo\projects\alpha_mining_demo\final_report.py:83: DeprecationWarning: DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
+  ic_daily = panel.groupby("datetime").apply(
+F:\004大学学业资料\大二下-大三下\量化交易\20260918北京大学-VeighNa量化平台-课件代码\pku_demo\projects\alpha_mining_demo\final_report.py:83: DeprecationWarning: DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
+  ic_daily = panel.groupby("datetime").apply(
+F:\004大学学业资料\大二下-大三下\量化交易\20260918北京大学-VeighNa量化平台-课件代码\pku_demo\projects\alpha_mining_demo\final_report.py:83: DeprecationWarning: DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
+  ic_daily = panel.groupby("datetime").apply(
+分析 REV4_TURN_HIGHPOS（4日反转×换手×高位权重） ...
+分析 REV4_TURN（4日反转×换手，简形式） ...
+分析 REV4_TURN_POS20_AMP（四件套：反转×换手×高位×振幅） ...
+报告已写入: F:\004大学学业资料\大二下-大三下\量化交易\20260918北京大学-VeighNa量化平台-课件代码\pku_demo\projects\alpha_mining_demo\runs\final\performance_report.md

@@ -1,0 +1,20 @@
+{
+  "rev4_turn_highpos": {
+    "expression": "-ts_delta(close, 4) / close * cs_rank(turnover) * ((close - ts_min(close, 20)) / (ts_max(close, 20) - ts_min(close, 20)))",
+    "name": "REV4_TURN_HIGHPOS（4日反转×换手×高位权重）",
+    "train_rank_ir": 0.486,
+    "valid_rank_ir": 0.284
+  },
+  "rev4_turn": {
+    "expression": "-ts_delta(close, 4) / close * cs_rank(turnover)",
+    "name": "REV4_TURN（4日反转×换手，简形式）",
+    "train_rank_ir": 0.399,
+    "valid_rank_ir": 0.239
+  },
+  "rev4_turn_pos20_amp": {
+    "expression": "-ts_delta(close, 4) / close * cs_rank(turnover) * ((close - ts_min(close, 20)) / (ts_max(close, 20) - ts_min(close, 20))) * cs_rank(ts_mean((high - low) / close, 20))",
+    "name": "REV4_TURN_POS20_AMP（四件套：反转×换手×高位×振幅）",
+    "train_rank_ir": 0.491,
+    "valid_rank_ir": 0.309
+  }
+}

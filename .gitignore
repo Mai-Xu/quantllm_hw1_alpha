@@ -1,0 +1,59 @@
+# Python
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+__pycache__/
+
+# Jupyter
+.ipynb_checkpoints
+
+# IDE
+.vscode
+.idea
+*.wpr
+*.wpu
+.vs
+x64
+
+# Temp
+build
+dist
+*.local
+
+# VeighNa
+.vntrader
+
+# Visual Studio intermediate files
+*.exp
+*.iobj
+*.ipdb
+*.pdb
+
+# Documents
+_build
+_static
+_templates
+
+# Misc
+.DS_Store
+*.mo
+
+# 编辑备份（用户规范：_backup 后缀）
+*_backup
+*_backup[0-9]*
+
+# CTP 流文件目录
+flow/
+flow_*/
+**/flow/
+
+# raw/ 原始资料层（AGENTS.md 红线：不入库；含 vnpy 源码快照 ~100MB）
+raw/
+
+# 数据缓存（base_dataset.pkl ~224MB，可由 lab 重建）
+*.pkl
+projects/*/runs/cache/
+
+# 注意：因子挖掘的报告/协议/轮次笔记/指标 json **入库**（2026-09-30 用户决定）
+# 仅排除上方 cache 与 pkl

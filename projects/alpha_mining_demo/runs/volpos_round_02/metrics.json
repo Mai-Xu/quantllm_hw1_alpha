@@ -1,0 +1,310 @@
+[
+  {
+    "name": "rev3_turn_pos",
+    "expression": "-ts_delta(close, 3) / close * cs_rank(turnover) * (1 - (close - ts_min(close, 20)) / (ts_max(close, 20) - ts_min(close, 20)))",
+    "segments": {
+      "train": {
+        "days": 2190,
+        "ic_mean": 0.016587414827111017,
+        "ic_std": 0.12051875763082624,
+        "ir": 0.13763347011858254,
+        "rank_ic_mean": 0.03829933252420411,
+        "rank_ic_std": 0.14184521703777406,
+        "rank_ir": 0.27000792359466597,
+        "ic_win_rate": 1.0,
+        "directional_win_rate": 0.5602739726027397
+      },
+      "valid": {
+        "days": 487,
+        "ic_mean": 0.005886267958425808,
+        "ic_std": 0.11474605358360632,
+        "ir": 0.05129821701568981,
+        "rank_ic_mean": 0.02185128085754579,
+        "rank_ic_std": 0.1343438587542668,
+        "rank_ir": 0.16265187750423898,
+        "ic_win_rate": 1.0,
+        "directional_win_rate": 0.4948665297741273
+      }
+    }
+  },
+  {
+    "name": "rev5_turn_pos",
+    "expression": "-ts_delta(close, 5) / close * cs_rank(turnover) * (1 - (close - ts_min(close, 20)) / (ts_max(close, 20) - ts_min(close, 20)))",
+    "segments": {
+      "train": {
+        "days": 2190,
+        "ic_mean": 0.0218271837813135,
+        "ic_std": 0.12182607655582504,
+        "ir": 0.1791667629656571,
+        "rank_ic_mean": 0.04489168430272942,
+        "rank_ic_std": 0.14302264577019394,
+        "rank_ir": 0.3138781558751229,
+        "ic_win_rate": 1.0,
+        "directional_win_rate": 0.5726027397260274
+      },
+      "valid": {
+        "days": 487,
+        "ic_mean": 0.008047204792502092,
+        "ic_std": 0.11758839885373419,
+        "ir": 0.06843536327518028,
+        "rank_ic_mean": 0.026117870966306724,
+        "rank_ic_std": 0.14247217939323972,
+        "rank_ir": 0.18331909484039247,
+        "ic_win_rate": 1.0,
+        "directional_win_rate": 0.5154004106776181
+      }
+    }
+  },
+  {
+    "name": "rev6_turn_pos",
+    "expression": "-ts_delta(close, 6) / close * cs_rank(turnover) * (1 - (close - ts_min(close, 20)) / (ts_max(close, 20) - ts_min(close, 20)))",
+    "segments": {
+      "train": {
+        "days": 2190,
+        "ic_mean": 0.01727561491363631,
+        "ic_std": 0.12502606911932332,
+        "ir": 0.13817610227470783,
+        "rank_ic_mean": 0.03714672440641672,
+        "rank_ic_std": 0.1473655683106789,
+        "rank_ir": 0.2520719380534216,
+        "ic_win_rate": 1.0,
+        "directional_win_rate": 0.541095890410959
+      },
+      "valid": {
+        "days": 487,
+        "ic_mean": 0.007863123138411069,
+        "ic_std": 0.1187535945073463,
+        "ir": 0.06621376953709508,
+        "rank_ic_mean": 0.02264856654440861,
+        "rank_ic_std": 0.14460815288050655,
+        "rank_ir": 0.15662026029143533,
+        "ic_win_rate": 1.0,
+        "directional_win_rate": 0.5154004106776181
+      }
+    }
+  },
+  {
+    "name": "rev4_turn",
+    "expression": "-ts_delta(close, 4) / close * cs_rank(turnover)",
+    "segments": {
+      "train": {
+        "days": 2190,
+        "ic_mean": 0.037755708207262095,
+        "ic_std": 0.1450529402984339,
+        "ir": 0.2602891615267018,
+        "rank_ic_mean": 0.06531844833649678,
+        "rank_ic_std": 0.16369284762161615,
+        "rank_ir": 0.3990305580576342,
+        "ic_win_rate": 1.0,
+        "directional_win_rate": 0.6100456621004566
+      },
+      "valid": {
+        "days": 487,
+        "ic_mean": 0.013097240916920992,
+        "ic_std": 0.14004281110897063,
+        "ir": 0.09352312205965159,
+        "rank_ic_mean": 0.03747866676406081,
+        "rank_ic_std": 0.1567563575874044,
+        "rank_ir": 0.2390886554196911,
+        "ic_win_rate": 1.0,
+        "directional_win_rate": 0.5503080082135524
+      }
+    }
+  },
+  {
+    "name": "rev4_lowpos",
+    "expression": "-ts_delta(close, 4) / close * (1 - (close - ts_min(close, 20)) / (ts_max(close, 20) - ts_min(close, 20)))",
+    "segments": {
+      "train": {
+        "days": 2190,
+        "ic_mean": 0.023387071506391924,
+        "ic_std": 0.12926007128829223,
+        "ir": 0.1809303621242101,
+        "rank_ic_mean": 0.045873909858894155,
+        "rank_ic_std": 0.14665946860633214,
+        "rank_ir": 0.3127920092362418,
+        "ic_win_rate": 1.0,
+        "directional_win_rate": 0.5812785388127854
+      },
+      "valid": {
+        "days": 487,
+        "ic_mean": -0.011922441622144115,
+        "ic_std": 0.14474556309371325,
+        "ir": -0.0823682699995793,
+        "rank_ic_mean": 0.02240557612474824,
+        "rank_ic_std": 0.14566365326676775,
+        "rank_ir": 0.15381720574943133,
+        "ic_win_rate": 1.0,
+        "directional_win_rate": 0.5338809034907598
+      }
+    }
+  },
+  {
+    "name": "turn_lowpos",
+    "expression": "cs_rank(turnover) * (1 - (close - ts_min(close, 20)) / (ts_max(close, 20) - ts_min(close, 20)))",
+    "segments": {
+      "train": {
+        "days": 2190,
+        "ic_mean": -0.009778938287748788,
+        "ic_std": 0.13330810350032135,
+        "ir": -0.07335591783979745,
+        "rank_ic_mean": 0.009139011559192002,
+        "rank_ic_std": 0.14774734538577344,
+        "rank_ir": 0.06185567351704172,
+        "ic_win_rate": 1.0,
+        "directional_win_rate": 0.5529680365296804
+      },
+      "valid": {
+        "days": 487,
+        "ic_mean": -0.016089307507892624,
+        "ic_std": 0.13805328668059036,
+        "ir": -0.11654418300897074,
+        "rank_ic_mean": -0.004416076392954706,
+        "rank_ic_std": 0.1555882995668578,
+        "rank_ir": -0.028383087965153028,
+        "ic_win_rate": 1.0,
+        "directional_win_rate": 0.5708418891170431
+      }
+    }
+  },
+  {
+    "name": "rev5_amp5_turn",
+    "expression": "-ts_delta(close, 5) / close * cs_rank(ts_mean((high - low) / close, 5)) * cs_rank(turnover)",
+    "segments": {
+      "train": {
+        "days": 2190,
+        "ic_mean": 0.03828094627717441,
+        "ic_std": 0.14369388267645272,
+        "ir": 0.26640623500562943,
+        "rank_ic_mean": 0.06606777613254974,
+        "rank_ic_std": 0.17234489392754165,
+        "rank_ir": 0.38334629258193387,
+        "ic_win_rate": 1.0,
+        "directional_win_rate": 0.6123287671232877
+      },
+      "valid": {
+        "days": 487,
+        "ic_mean": 0.016738346052573357,
+        "ic_std": 0.14093523158866644,
+        "ir": 0.11876622945088629,
+        "rank_ic_mean": 0.0363631183076585,
+        "rank_ic_std": 0.16410059461225873,
+        "rank_ir": 0.22159041162268941,
+        "ic_win_rate": 1.0,
+        "directional_win_rate": 0.5523613963039015
+      }
+    }
+  },
+  {
+    "name": "rev5_hivol_turn",
+    "expression": "-ts_delta(close, 5) / close * cs_rank(ts_std(ts_delta(close, 1) / ts_delay(close, 1), 20)) * cs_rank(turnover)",
+    "segments": {
+      "train": {
+        "days": 2190,
+        "ic_mean": 0.03373947378977597,
+        "ic_std": 0.14326551610810093,
+        "ir": 0.23550310435009267,
+        "rank_ic_mean": 0.06515127969997848,
+        "rank_ic_std": 0.17444295806201918,
+        "rank_ir": 0.37348185575261483,
+        "ic_win_rate": 1.0,
+        "directional_win_rate": 0.6027397260273972
+      },
+      "valid": {
+        "days": 487,
+        "ic_mean": 0.013357944021280686,
+        "ic_std": 0.13877107421678564,
+        "ir": 0.09625885002816328,
+        "rank_ic_mean": 0.03588863077305737,
+        "rank_ic_std": 0.1635278936711589,
+        "rank_ir": 0.21946488741074624,
+        "ic_win_rate": 1.0,
+        "directional_win_rate": 0.5482546201232033
+      }
+    }
+  },
+  {
+    "name": "rev4_turn_lowdist",
+    "expression": "-ts_delta(close, 4) / close * cs_rank(turnover) * cs_rank(close / ts_min(low, 20))",
+    "segments": {
+      "train": {
+        "days": 2190,
+        "ic_mean": 0.04196098218617674,
+        "ic_std": 0.13614618958563196,
+        "ir": 0.30820533658626204,
+        "rank_ic_mean": 0.06987619587439647,
+        "rank_ic_std": 0.15996359773618218,
+        "rank_ir": 0.4368256082214333,
+        "ic_win_rate": 1.0,
+        "directional_win_rate": 0.639269406392694
+      },
+      "valid": {
+        "days": 487,
+        "ic_mean": 0.01764235792235646,
+        "ic_std": 0.13449155194357318,
+        "ir": 0.131178186788702,
+        "rank_ic_mean": 0.04122212816635714,
+        "rank_ic_std": 0.1524108306107984,
+        "rank_ir": 0.2704671839996949,
+        "ic_win_rate": 1.0,
+        "directional_win_rate": 0.5687885010266941
+      }
+    }
+  },
+  {
+    "name": "rev4_turn_pos60",
+    "expression": "-ts_delta(close, 4) / close * cs_rank(turnover) * (1 - (close - ts_min(close, 60)) / (ts_max(close, 60) - ts_min(close, 60)))",
+    "segments": {
+      "train": {
+        "days": 2190,
+        "ic_mean": 0.025483511080758733,
+        "ic_std": 0.12597413815178218,
+        "ir": 0.20229160885430683,
+        "rank_ic_mean": 0.051055816021477476,
+        "rank_ic_std": 0.1533314693224327,
+        "rank_ir": 0.33297676104645474,
+        "ic_win_rate": 1.0,
+        "directional_win_rate": 0.5835616438356165
+      },
+      "valid": {
+        "days": 487,
+        "ic_mean": 0.01191196974929676,
+        "ic_std": 0.11633747071988015,
+        "ir": 0.1023915138913296,
+        "rank_ic_mean": 0.031979440346574524,
+        "rank_ic_std": 0.14677649423727904,
+        "rank_ir": 0.21787848601204854,
+        "ic_win_rate": 1.0,
+        "directional_win_rate": 0.5462012320328542
+      }
+    }
+  },
+  {
+    "name": "rev4_turn_amp_pos",
+    "expression": "-ts_delta(close, 4) / close * cs_rank(turnover) * (1 - (close - ts_min(close, 20)) / (ts_max(close, 20) - ts_min(close, 20))) * cs_rank(ts_mean((high - low) / close, 5))",
+    "segments": {
+      "train": {
+        "days": 2190,
+        "ic_mean": 0.027340671575245352,
+        "ic_std": 0.11851986262108642,
+        "ir": 0.2306843002565297,
+        "rank_ic_mean": 0.053437096869519383,
+        "rank_ic_std": 0.1484483152447294,
+        "rank_ir": 0.3599710564678614,
+        "ic_win_rate": 1.0,
+        "directional_win_rate": 0.602283105022831
+      },
+      "valid": {
+        "days": 487,
+        "ic_mean": 0.01485160366606504,
+        "ic_std": 0.1160296783396715,
+        "ir": 0.12799831800436143,
+        "rank_ic_mean": 0.03340708951846631,
+        "rank_ic_std": 0.14605980149550268,
+        "rank_ir": 0.22872199726695472,
+        "ic_win_rate": 1.0,
+        "directional_win_rate": 0.5667351129363449
+      }
+    }
+  }
+]

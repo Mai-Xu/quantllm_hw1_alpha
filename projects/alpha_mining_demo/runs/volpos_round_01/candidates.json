@@ -1,0 +1,20 @@
+{
+  "pos20": "(close - ts_min(close, 20)) / (ts_max(close, 20) - ts_min(close, 20))",
+  "pos60": "(close - ts_min(close, 60)) / (ts_max(close, 60) - ts_min(close, 60))",
+  "dist_high20": "close / ts_max(high, 20) - 1",
+  "dist_low20": "close / ts_min(low, 20) - 1",
+  "range20": "(ts_max(high, 20) - ts_min(low, 20)) / close",
+  "amp1": "(high - low) / close",
+  "amp5": "ts_mean((high - low) / close, 5)",
+  "vol20": "ts_std(ts_delta(close, 1) / ts_delay(close, 1), 20)",
+  "vol_ratio_5_20": "ts_std(ts_delta(close, 1) / ts_delay(close, 1), 5) / ts_std(ts_delta(close, 1) / ts_delay(close, 1), 20)",
+  "rev5_hivol": "-ts_delta(close, 5) / close * cs_rank(ts_std(ts_delta(close, 1) / ts_delay(close, 1), 20))",
+  "rev5_lovol": "-ts_delta(close, 5) / close * (1 - cs_rank(ts_std(ts_delta(close, 1) / ts_delay(close, 1), 20)))",
+  "mom5_hivol": "ts_delta(close, 5) / close * cs_rank(ts_std(ts_delta(close, 1) / ts_delay(close, 1), 20))",
+  "rev5_squeeze": "-ts_delta(close, 5) / close * cs_rank(ts_std(ts_delta(close, 1) / ts_delay(close, 1), 5) / ts_std(ts_delta(close, 1) / ts_delay(close, 1), 20))",
+  "pos20_turn": "(close - ts_min(close, 20)) / (ts_max(close, 20) - ts_min(close, 20)) * cs_rank(turnover)",
+  "rev4_turn_pos": "-ts_delta(close, 4) / close * cs_rank(turnover) * (1 - (close - ts_min(close, 20)) / (ts_max(close, 20) - ts_min(close, 20)))",
+  "rev5_lowpos": "-ts_delta(close, 5) / close * (1 - (close - ts_min(close, 20)) / (ts_max(close, 20) - ts_min(close, 20)))",
+  "rev5_highpos": "-ts_delta(close, 5) / close * ((close - ts_min(close, 20)) / (ts_max(close, 20) - ts_min(close, 20)))",
+  "amp5_rev5": "-ts_delta(close, 5) / close * cs_rank(ts_mean((high - low) / close, 5))"
+}

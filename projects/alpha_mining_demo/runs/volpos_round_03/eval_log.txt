@@ -1,0 +1,157 @@
+评估 12 个因子: ['rev3_turn', 'rev3_turn_lowdist', 'rev4_amp5', 'rev4_turn_highpos', 'rev4_turn_lowdist10', 'rev4_turn_lowdist60', 'rev4_turn_lowdist_half', 'rev4_turn_lowdist_rk20', 'rev4_turn_lowdist_z', 'rev4_turn_nearhigh', 'rev5_turn', 'rev5_turn_lowdist']
+使用缓存数据集 F:\004大学学业资料\大二下-大三下\量化交易\20260918北京大学-VeighNa量化平台-课件代码\pku_demo\projects\alpha_mining_demo\runs\cache\base_dataset.pkl（若修改过数据区间/成分股，请删除该文件后重建）
+[32m2026-09-30 17:08:49[0m [1m开始计算表达式因子特征[0m
+
+  0%|          | 0/13 [00:00<?, ?it/s]
+  8%|▊         | 1/13 [00:02<00:32,  2.70s/it]
+ 15%|█▌        | 2/13 [00:03<00:16,  1.52s/it]
+ 23%|██▎       | 3/13 [00:04<00:11,  1.16s/it]
+ 31%|███       | 4/13 [00:04<00:08,  1.01it/s]
+ 38%|███▊      | 5/13 [00:05<00:07,  1.10it/s]
+ 46%|████▌     | 6/13 [00:06<00:06,  1.17it/s]
+ 54%|█████▍    | 7/13 [00:07<00:05,  1.20it/s]
+ 62%|██████▏   | 8/13 [00:07<00:04,  1.24it/s]
+ 69%|██████▉   | 9/13 [00:08<00:03,  1.26it/s]
+ 77%|███████▋  | 10/13 [00:09<00:02,  1.19it/s]
+ 85%|████████▍ | 11/13 [00:10<00:01,  1.24it/s]
+ 92%|█████████▏| 12/13 [01:42<00:28, 28.54s/it]
+100%|██████████| 13/13 [01:42<00:00,  7.87s/it]
+Feature calculation rev5_turn took: 0.15563631057739258 seconds | -ts_delta(close, 5) / close * cs_rank(turnover)
+Feature calculation rev4_turn_lowdist60 took: 0.3318009376525879 seconds | -ts_delta(close, 4) / close * cs_rank(turnover) * cs_rank(close / ts_min(low, 60))
+Feature calculation rev4_turn_lowdist_z took: 0.4686729907989502 seconds | -ts_delta(close, 4) / close * cs_rank(turnover) * cs_scale(close / ts_min(low, 20))
+Feature calculation rev4_turn_highpos took: 0.30985450744628906 seconds | -ts_delta(close, 4) / close * cs_rank(turnover) * ((close - ts_min(close, 20)) / (ts_max(close, 20) - ts_min(close, 20)))
+Feature calculation rev4_turn_lowdist_rk20 took: 0.36516761779785156 seconds | -ts_delta(close, 4) / close * cs_rank(turnover) * cs_rank(close / ts_min(low, 20) - 1)
+Feature calculation rev4_turn_lowdist_half took: 0.33411121368408203 seconds | -ts_delta(close, 4) / close * cs_rank(turnover) * (0.5 + 0.5 * cs_rank(close / ts_min(low, 20)))
+Feature calculation rev3_turn took: 0.16475391387939453 seconds | -ts_delta(close, 3) / close * cs_rank(turnover)
+Feature calculation rev4_turn_lowdist10 took: 0.3042879104614258 seconds | -ts_delta(close, 4) / close * cs_rank(turnover) * cs_rank(close / ts_min(low, 10))
+Feature calculation rev3_turn_lowdist took: 0.31339120864868164 seconds | -ts_delta(close, 3) / close * cs_rank(turnover) * cs_rank(close / ts_min(low, 20))
+Feature calculation label took: 0.09993267059326172 seconds | ts_delay(close, -3) / ts_delay(close, -1) - 1
+Feature calculation rev4_turn_nearhigh took: 0.2837793827056885 seconds | -ts_delta(close, 4) / close * cs_rank(turnover) * cs_rank(close / ts_max(high, 20))
+Feature calculation rev5_turn_lowdist took: 0.3506598472595215 seconds | -ts_delta(close, 5) / close * cs_rank(turnover) * cs_rank(close / ts_min(low, 20))
+Feature calculation rev4_amp5 took: 91.47256469726562 seconds | -ts_delta(close, 4) / close * cs_rank(ts_mean((high - low) / close, 5))
+[32m2026-09-30 17:10:32[0m [1m开始合并结果数据因子特征[0m
+
+0it [00:00, ?it/s]
+0it [00:00, ?it/s]
+[32m2026-09-30 17:10:32[0m [1m开始筛选成分股数据[0m
+
+  0%|          | 0/819 [00:00<?, ?it/s]
+  5%|▌         | 44/819 [00:00<00:01, 426.71it/s]
+ 11%|█         | 87/819 [00:00<00:01, 424.49it/s]
+ 16%|█▌        | 130/819 [00:00<00:01, 424.07it/s]
+ 21%|██        | 174/819 [00:00<00:01, 425.21it/s]
+ 26%|██▋       | 217/819 [00:00<00:01, 420.60it/s]
+ 32%|███▏      | 263/819 [00:00<00:01, 429.59it/s]
+ 37%|███▋      | 306/819 [00:00<00:01, 401.97it/s]
+ 43%|████▎     | 351/819 [00:00<00:01, 414.21it/s]
+ 48%|████▊     | 393/819 [00:00<00:01, 414.13it/s]
+ 53%|█████▎    | 435/819 [00:01<00:00, 413.56it/s]
+ 58%|█████▊    | 479/819 [00:01<00:00, 418.14it/s]
+ 64%|██████▎   | 521/819 [00:01<00:00, 407.27it/s]
+ 69%|██████▊   | 562/819 [00:01<00:00, 393.25it/s]
+ 74%|███████▍  | 605/819 [00:01<00:00, 401.28it/s]
+ 79%|███████▉  | 646/819 [00:01<00:00, 397.91it/s]
+ 84%|████████▍ | 691/819 [00:01<00:00, 412.10it/s]
+ 89%|████████▉ | 733/819 [00:01<00:00, 394.86it/s]
+ 95%|█████████▍| 776/819 [00:01<00:00, 403.16it/s]
+100%|█████████▉| 817/819 [00:01<00:00, 400.30it/s]
+100%|██████████| 819/819 [00:02<00:00, 408.21it/s]
+F:\004大学学业资料\大二下-大三下\量化交易\20260918北京大学-VeighNa量化平台-课件代码\pku_demo\projects\alpha_mining_demo\eval_factors.py:168: DeprecationWarning: DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
+  daily = seg.groupby("datetime").apply(
+F:\004大学学业资料\大二下-大三下\量化交易\20260918北京大学-VeighNa量化平台-课件代码\pku_demo\projects\alpha_mining_demo\eval_factors.py:168: DeprecationWarning: DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
+  daily = seg.groupby("datetime").apply(
+F:\004大学学业资料\大二下-大三下\量化交易\20260918北京大学-VeighNa量化平台-课件代码\pku_demo\projects\alpha_mining_demo\eval_factors.py:168: DeprecationWarning: DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
+  daily = seg.groupby("datetime").apply(
+F:\004大学学业资料\大二下-大三下\量化交易\20260918北京大学-VeighNa量化平台-课件代码\pku_demo\projects\alpha_mining_demo\eval_factors.py:168: DeprecationWarning: DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
+  daily = seg.groupby("datetime").apply(
+F:\004大学学业资料\大二下-大三下\量化交易\20260918北京大学-VeighNa量化平台-课件代码\pku_demo\projects\alpha_mining_demo\eval_factors.py:168: DeprecationWarning: DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
+  daily = seg.groupby("datetime").apply(
+F:\004大学学业资料\大二下-大三下\量化交易\20260918北京大学-VeighNa量化平台-课件代码\pku_demo\projects\alpha_mining_demo\eval_factors.py:168: DeprecationWarning: DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
+  daily = seg.groupby("datetime").apply(
+F:\004大学学业资料\大二下-大三下\量化交易\20260918北京大学-VeighNa量化平台-课件代码\pku_demo\projects\alpha_mining_demo\eval_factors.py:168: DeprecationWarning: DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
+  daily = seg.groupby("datetime").apply(
+F:\004大学学业资料\大二下-大三下\量化交易\20260918北京大学-VeighNa量化平台-课件代码\pku_demo\projects\alpha_mining_demo\eval_factors.py:168: DeprecationWarning: DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
+  daily = seg.groupby("datetime").apply(
+F:\004大学学业资料\大二下-大三下\量化交易\20260918北京大学-VeighNa量化平台-课件代码\pku_demo\projects\alpha_mining_demo\eval_factors.py:168: DeprecationWarning: DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
+  daily = seg.groupby("datetime").apply(
+F:\004大学学业资料\大二下-大三下\量化交易\20260918北京大学-VeighNa量化平台-课件代码\pku_demo\projects\alpha_mining_demo\eval_factors.py:168: DeprecationWarning: DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
+  daily = seg.groupby("datetime").apply(
+F:\004大学学业资料\大二下-大三下\量化交易\20260918北京大学-VeighNa量化平台-课件代码\pku_demo\projects\alpha_mining_demo\eval_factors.py:168: DeprecationWarning: DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
+  daily = seg.groupby("datetime").apply(
+F:\004大学学业资料\大二下-大三下\量化交易\20260918北京大学-VeighNa量化平台-课件代码\pku_demo\projects\alpha_mining_demo\eval_factors.py:168: DeprecationWarning: DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
+  daily = seg.groupby("datetime").apply(
+F:\004大学学业资料\大二下-大三下\量化交易\20260918北京大学-VeighNa量化平台-课件代码\pku_demo\projects\alpha_mining_demo\eval_factors.py:168: DeprecationWarning: DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
+  daily = seg.groupby("datetime").apply(
+F:\004大学学业资料\大二下-大三下\量化交易\20260918北京大学-VeighNa量化平台-课件代码\pku_demo\projects\alpha_mining_demo\eval_factors.py:168: DeprecationWarning: DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
+  daily = seg.groupby("datetime").apply(
+F:\004大学学业资料\大二下-大三下\量化交易\20260918北京大学-VeighNa量化平台-课件代码\pku_demo\projects\alpha_mining_demo\eval_factors.py:168: DeprecationWarning: DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
+  daily = seg.groupby("datetime").apply(
+F:\004大学学业资料\大二下-大三下\量化交易\20260918北京大学-VeighNa量化平台-课件代码\pku_demo\projects\alpha_mining_demo\eval_factors.py:168: DeprecationWarning: DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
+  daily = seg.groupby("datetime").apply(
+F:\004大学学业资料\大二下-大三下\量化交易\20260918北京大学-VeighNa量化平台-课件代码\pku_demo\projects\alpha_mining_demo\eval_factors.py:168: DeprecationWarning: DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
+  daily = seg.groupby("datetime").apply(
+F:\004大学学业资料\大二下-大三下\量化交易\20260918北京大学-VeighNa量化平台-课件代码\pku_demo\projects\alpha_mining_demo\eval_factors.py:168: DeprecationWarning: DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
+  daily = seg.groupby("datetime").apply(
+F:\004大学学业资料\大二下-大三下\量化交易\20260918北京大学-VeighNa量化平台-课件代码\pku_demo\projects\alpha_mining_demo\eval_factors.py:168: DeprecationWarning: DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
+  daily = seg.groupby("datetime").apply(
+F:\004大学学业资料\大二下-大三下\量化交易\20260918北京大学-VeighNa量化平台-课件代码\pku_demo\projects\alpha_mining_demo\eval_factors.py:168: DeprecationWarning: DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
+  daily = seg.groupby("datetime").apply(
+F:\004大学学业资料\大二下-大三下\量化交易\20260918北京大学-VeighNa量化平台-课件代码\pku_demo\projects\alpha_mining_demo\eval_factors.py:168: DeprecationWarning: DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
+  daily = seg.groupby("datetime").apply(
+F:\004大学学业资料\大二下-大三下\量化交易\20260918北京大学-VeighNa量化平台-课件代码\pku_demo\projects\alpha_mining_demo\eval_factors.py:168: DeprecationWarning: DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
+  daily = seg.groupby("datetime").apply(
+F:\004大学学业资料\大二下-大三下\量化交易\20260918北京大学-VeighNa量化平台-课件代码\pku_demo\projects\alpha_mining_demo\eval_factors.py:168: DeprecationWarning: DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
+  daily = seg.groupby("datetime").apply(
+F:\004大学学业资料\大二下-大三下\量化交易\20260918北京大学-VeighNa量化平台-课件代码\pku_demo\projects\alpha_mining_demo\eval_factors.py:168: DeprecationWarning: DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
+  daily = seg.groupby("datetime").apply(
+因子绩效摘要（train / valid）
+
+[rev3_turn]  -ts_delta(close, 3) / close * cs_rank(turnover)
+  train: IC=+0.0279 IR=+0.197 RankIC=+0.0532 RankIR=+0.334 方向胜率=59.04% 天数=2190
+  valid: IC=+0.0083 IR=+0.060 RankIC=+0.0300 RankIR=+0.198 方向胜率=51.75% 天数=487
+
+[rev5_turn]  -ts_delta(close, 5) / close * cs_rank(turnover)
+  train: IC=+0.0356 IR=+0.241 RankIC=+0.0621 RankIR=+0.374 方向胜率=59.77% 天数=2190
+  valid: IC=+0.0097 IR=+0.068 RankIC=+0.0329 RankIR=+0.205 方向胜率=53.39% 天数=487
+
+[rev4_turn_highpos]  -ts_delta(close, 4) / close * cs_rank(turnover) * ((close - ts_min(close, 20)) / (ts_max(close, 20) - ts_min(close, 20)))
+  train: IC=+0.0401 IR=+0.312 RankIC=+0.0667 RankIR=+0.486 方向胜率=63.97% 天数=2190
+  valid: IC=+0.0115 IR=+0.090 RankIC=+0.0375 RankIR=+0.284 方向胜率=56.26% 天数=487
+
+[rev4_turn_nearhigh]  -ts_delta(close, 4) / close * cs_rank(turnover) * cs_rank(close / ts_max(high, 20))
+  train: IC=+0.0312 IR=+0.248 RankIC=+0.0573 RankIR=+0.403 方向胜率=61.23% 天数=2190
+  valid: IC=+0.0043 IR=+0.034 RankIC=+0.0310 RankIR=+0.224 方向胜率=54.21% 天数=487
+
+[rev4_turn_lowdist10]  -ts_delta(close, 4) / close * cs_rank(turnover) * cs_rank(close / ts_min(low, 10))
+  train: IC=+0.0387 IR=+0.285 RankIC=+0.0656 RankIR=+0.410 方向胜率=62.42% 天数=2190
+  valid: IC=+0.0159 IR=+0.118 RankIC=+0.0406 RankIR=+0.265 方向胜率=55.65% 天数=487
+
+[rev4_turn_lowdist60]  -ts_delta(close, 4) / close * cs_rank(turnover) * cs_rank(close / ts_min(low, 60))
+  train: IC=+0.0426 IR=+0.310 RankIC=+0.0730 RankIR=+0.452 方向胜率=63.61% 天数=2190
+  valid: IC=+0.0190 IR=+0.140 RankIC=+0.0433 RankIR=+0.284 方向胜率=57.08% 天数=487
+
+[rev4_turn_lowdist_rk20]  -ts_delta(close, 4) / close * cs_rank(turnover) * cs_rank(close / ts_min(low, 20) - 1)
+  train: IC=+0.0420 IR=+0.308 RankIC=+0.0699 RankIR=+0.437 方向胜率=63.93% 天数=2190
+  valid: IC=+0.0176 IR=+0.131 RankIC=+0.0412 RankIR=+0.270 方向胜率=56.88% 天数=487
+
+[rev5_turn_lowdist]  -ts_delta(close, 5) / close * cs_rank(turnover) * cs_rank(close / ts_min(low, 20))
+  train: IC=+0.0391 IR=+0.283 RankIC=+0.0661 RankIR=+0.407 方向胜率=61.96% 天数=2190
+  valid: IC=+0.0144 IR=+0.105 RankIC=+0.0360 RankIR=+0.231 方向胜率=55.03% 天数=487
+
+[rev3_turn_lowdist]  -ts_delta(close, 3) / close * cs_rank(turnover) * cs_rank(close / ts_min(low, 20))
+  train: IC=+0.0327 IR=+0.245 RankIC=+0.0584 RankIR=+0.372 方向胜率=60.64% 天数=2190
+  valid: IC=+0.0124 IR=+0.092 RankIC=+0.0332 RankIR=+0.224 方向胜率=54.83% 天数=487
+
+[rev4_turn_lowdist_z]  -ts_delta(close, 4) / close * cs_rank(turnover) * cs_scale(close / ts_min(low, 20))
+  train: IC=+0.0364 IR=+0.253 RankIC=+0.0658 RankIR=+0.402 方向胜率=60.59% 天数=2190
+  valid: IC=+0.0095 IR=+0.068 RankIC=+0.0375 RankIR=+0.239 方向胜率=54.41% 天数=487
+
+[rev4_turn_lowdist_half]  -ts_delta(close, 4) / close * cs_rank(turnover) * (0.5 + 0.5 * cs_rank(close / ts_min(low, 20)))
+  train: IC=+0.0420 IR=+0.308 RankIC=+0.0699 RankIR=+0.437 方向胜率=63.84% 天数=2190
+  valid: IC=+0.0176 IR=+0.131 RankIC=+0.0412 RankIR=+0.270 方向胜率=56.88% 天数=487
+
+[rev4_amp5]  -ts_delta(close, 4) / close * cs_rank(ts_mean((high - low) / close, 5))
+  train: IC=+0.0430 IR=+0.288 RankIC=+0.0685 RankIR=+0.396 方向胜率=62.24% 天数=2190
+  valid: IC=+0.0136 IR=+0.096 RankIC=+0.0367 RankIR=+0.226 方向胜率=55.44% 天数=487
+
+指标已写入: F:\004大学学业资料\大二下-大三下\量化交易\20260918北京大学-VeighNa量化平台-课件代码\pku_demo\projects\alpha_mining_demo\runs\volpos_round_03\metrics.json
