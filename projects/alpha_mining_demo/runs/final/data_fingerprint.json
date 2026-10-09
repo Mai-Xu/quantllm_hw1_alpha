@@ -1,0 +1,44 @@
+{
+  "dataset_file": "runs/cache/base_dataset.pkl",
+  "sha256": "4248f100c5d2e5f0bbcaa6b2b1790b5f0fddeb815e65aff0cc4388eb52701465",
+  "bytes": 234857524,
+  "rows": 2668723,
+  "symbols": 819,
+  "date_min": "2007-09-24 00:00:00",
+  "date_max": "2024-01-10 00:00:00",
+  "columns": [
+    "datetime",
+    "open",
+    "high",
+    "low",
+    "close",
+    "volume",
+    "turnover",
+    "open_interest",
+    "vwap",
+    "vt_symbol"
+  ],
+  "segments": {
+    "TRAIN": [
+      "2008-01-01",
+      "2016-12-31"
+    ],
+    "VALID": [
+      "2017-01-01",
+      "2018-12-31"
+    ],
+    "TEST": [
+      "2019-01-01",
+      "2020-08-31"
+    ]
+  },
+  "price_convention": "lab.load_bar_df 已按每股首日 close 归一化（跨标的可比）；日收益 close/prev_close-1 不受影响",
+  "volume_convention": "volume/turnover 为原始量纲（未归一化）",
+  "sample_symbols": [
+    "600320.SSE",
+    "600372.SSE",
+    "002304.SZSE",
+    "000029.SZSE",
+    "000786.SZSE"
+  ]
+}

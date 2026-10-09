@@ -1,0 +1,23 @@
+计算 3 个因子（含价量列）...
+使用缓存数据集 F:\004大学学业资料\大二下-大三下\量化交易\20260918北京大学-VeighNa量化平台-课件代码\pku_demo\projects\alpha_mining_demo\runs\cache\base_dataset.pkl（若修改过数据区间/成分股，请删除该文件后重建）
+[32m2026-10-09 13:02:50[0m [1m开始计算表达式因子特征[0m
+
+  0%|          | 0/4 [00:00<?, ?it/s]
+ 25%|██▌       | 1/4 [00:02<00:08,  2.83s/it]
+ 50%|█████     | 2/4 [00:03<00:03,  1.58s/it]
+Feature calculation rev4_turn_highpos took: 0.3206613063812256 seconds | -ts_delta(close, 4) / close * cs_rank(turnover) * ((close - ts_min(close, 20)) / (ts_max(close, 20) - ts_min(close, 20)))
+ 75%|███████▌  | 3/4 [01:41<00:45, 45.81s/it]
+100%|██████████| 4/4 [01:41<00:00, 25.50s/it]
+Feature calculation rev4_turn took: 0.15984416007995605 seconds | -ts_delta(close, 4) / close * cs_rank(turnover)
+Feature calculation label took: 0.11379766464233398 seconds | ts_delay(close, -3) / ts_delay(close, -1) - 1
+Feature calculation rev4_turn_pos20_amp took: 98.07741904258728 seconds | -ts_delta(close, 4) / close * cs_rank(turnover) * ((close - ts_min(close, 20)) / (ts_max(close, 20) - ts_min(close, 20))) * cs_rank(ts_mean((high - low) / close, 20))
+[32m2026-10-09 13:04:33[0m [1m开始合并结果数据因子特征[0m
+
+0it [00:00, ?it/s]
+0it [00:00, ?it/s]
+面板 2,668,723 行
+分析 rev4_turn_highpos ...
+分析 rev4_turn ...
+分析 rev4_turn_pos20_amp ...
+写入 F:\004大学学业资料\大二下-大三下\量化交易\20260918北京大学-VeighNa量化平台-课件代码\pku_demo\projects\alpha_mining_demo\runs\final\friction_report.md
+写入 F:\004大学学业资料\大二下-大三下\量化交易\20260918北京大学-VeighNa量化平台-课件代码\pku_demo\projects\alpha_mining_demo\runs\final\friction_detail.json

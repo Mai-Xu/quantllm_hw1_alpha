@@ -1,0 +1,344 @@
+[
+  {
+    "name": "rev4_turn_highpos",
+    "days": 3955,
+    "ic": {
+      "rank_ic_mean": 0.04748673184236167,
+      "hac_t": 17.483467373961155,
+      "boot_ci95": [
+        0.04164037113394378,
+        0.05336303749155828
+      ],
+      "hac_lag": 3
+    },
+    "segments": {
+      "train": {
+        "days": 2190,
+        "rank_ic_mean": 0.06674475303207132,
+        "hac_t": 19.017281889717374,
+        "boot_ci95": [
+          0.06036560459364641,
+          0.07348582793763239
+        ]
+      },
+      "valid": {
+        "days": 487,
+        "rank_ic_mean": 0.037496827182540104,
+        "hac_t": 5.210529991306864,
+        "boot_ci95": [
+          0.023134619076330427,
+          0.05082801262616415
+        ]
+      },
+      "test": {
+        "days": 405,
+        "rank_ic_mean": 0.0195924788556052,
+        "hac_t": 2.430316420720741,
+        "boot_ci95": [
+          0.000667761779047815,
+          0.03862356936343546
+        ]
+      }
+    },
+    "gross": {
+      "long_annual": 0.12691185177021297,
+      "long_sharpe": 0.6322363193613794,
+      "long_maxdd": -0.38829022416998005,
+      "ls_annual": 0.17367572518513438,
+      "ls_sharpe": 1.4039636795666592,
+      "ls_maxdd": -0.14849367594418406,
+      "nav_convention": "非重叠 3 日块（每 3 个交易日取一），年化因子 244/3",
+      "blocks": 1319
+    },
+    "cost": {
+      "low": {
+        "per_side_round_trip": 0.0019200000000000003,
+        "annual_drag": 0.26911444921528777,
+        "long_annual_gross": 0.12691185177021297,
+        "long_annual_net": -0.14220259744507482,
+        "long_sharpe_net": -0.7084101725588677,
+        "long_maxdd_net": -0.935083787331269
+      },
+      "base": {
+        "per_side_round_trip": 0.00302,
+        "annual_drag": 0.4232946024115464,
+        "long_annual_gross": 0.12691185177021297,
+        "long_annual_net": -0.2963827506413334,
+        "long_sharpe_net": -1.4764888918881756,
+        "long_maxdd_net": -0.9944811568569951
+      },
+      "high": {
+        "per_side_round_trip": 0.0051199999999999996,
+        "annual_drag": 0.7176385312407673,
+        "long_annual_gross": 0.12691185177021297,
+        "long_annual_net": -0.5907266794705541,
+        "long_sharpe_net": -2.9428209924259447,
+        "long_maxdd_net": -0.9999517272638203
+      }
+    },
+    "bootstrap_ci": {
+      "long_annual_ci95": [
+        0.03240495367738794,
+        0.21936610063176953
+      ],
+      "long_annual_net_base_ci95": [
+        -0.39088964873415843,
+        -0.20392850177977678
+      ],
+      "ls_sharpe_ci95": [
+        0.9827716973355004,
+        1.8796343865289897
+      ],
+      "B": 2000,
+      "block_len": 10
+    },
+    "turnover": {
+      "avg_daily_top_decile": 0.5744417034137802,
+      "annual_round_trips": 140.16377563296237
+    },
+    "tradability": {
+      "limitup_ratio_avg": 0.010564257597016007,
+      "susp_ratio_avg": 0.017978470516687488,
+      "note": "建仓日剔除停牌与涨停（涨停无法买入）；跌停无法卖出未额外剔除"
+    },
+    "capacity": {
+      "adv_proxy_median_amount": 275129396.0,
+      "size_limit_at_10pct_participation": 1209950214.3028066,
+      "note": "以多头组成交额中位数作 ADV 代理，参与率 10% 时的规模上限（粗略）"
+    },
+    "base_cost_used": {
+      "commission": 0.00025,
+      "stamp_sell": 0.0005,
+      "transfer": 1e-05,
+      "slippage": 0.001
+    }
+  },
+  {
+    "name": "rev4_turn",
+    "days": 3955,
+    "ic": {
+      "rank_ic_mean": 0.04715690221357414,
+      "hac_t": 14.704224258854207,
+      "boot_ci95": [
+        0.04063166107881183,
+        0.053703684577125675
+      ],
+      "hac_lag": 3
+    },
+    "segments": {
+      "train": {
+        "days": 2190,
+        "rank_ic_mean": 0.06531844833649678,
+        "hac_t": 15.217224844844145,
+        "boot_ci95": [
+          0.05686177989238739,
+          0.0734655743829361
+        ]
+      },
+      "valid": {
+        "days": 487,
+        "rank_ic_mean": 0.03747866676406081,
+        "hac_t": 4.284688413368505,
+        "boot_ci95": [
+          0.021051418164007955,
+          0.05248039250187151
+        ]
+      },
+      "test": {
+        "days": 405,
+        "rank_ic_mean": 0.024662858655103495,
+        "hac_t": 2.660973336310252,
+        "boot_ci95": [
+          0.004477346579455433,
+          0.046032475767846456
+        ]
+      }
+    },
+    "gross": {
+      "long_annual": 0.13404383123410551,
+      "long_sharpe": 0.5057963611125015,
+      "long_maxdd": -0.6367389927204363,
+      "ls_annual": 0.24766871557463485,
+      "ls_sharpe": 1.497766715710744,
+      "ls_maxdd": -0.23714708437220988,
+      "nav_convention": "非重叠 3 日块（每 3 个交易日取一），年化因子 244/3",
+      "blocks": 1319
+    },
+    "cost": {
+      "low": {
+        "per_side_round_trip": 0.0019200000000000003,
+        "annual_drag": 0.21390679715551855,
+        "long_annual_gross": 0.13404383123410551,
+        "long_annual_net": -0.07986296592141306,
+        "long_sharpe_net": -0.30135215607314475,
+        "long_maxdd_net": -0.8505342861323816
+      },
+      "base": {
+        "per_side_round_trip": 0.00302,
+        "annual_drag": 0.336457566359201,
+        "long_annual_gross": 0.13404383123410551,
+        "long_annual_net": -0.2024137351250955,
+        "long_sharpe_net": -0.7637809940440876,
+        "long_maxdd_net": -0.9791204363577013
+      },
+      "high": {
+        "per_side_round_trip": 0.0051199999999999996,
+        "annual_drag": 0.5704181257480493,
+        "long_annual_gross": 0.13404383123410551,
+        "long_annual_net": -0.4363742945139439,
+        "long_sharpe_net": -1.6465996847158881,
+        "long_maxdd_net": -0.9995360606567644
+      }
+    },
+    "bootstrap_ci": {
+      "long_annual_ci95": [
+        0.0018811048143744231,
+        0.2546792646585734
+      ],
+      "long_annual_net_base_ci95": [
+        -0.33457646154482656,
+        -0.08177830170062765
+      ],
+      "ls_sharpe_ci95": [
+        1.0305715437978178,
+        1.9944808591846699
+      ],
+      "B": 2000,
+      "block_len": 10
+    },
+    "turnover": {
+      "avg_daily_top_decile": 0.4565975007588766,
+      "annual_round_trips": 111.40979018516589
+    },
+    "tradability": {
+      "limitup_ratio_avg": 0.010262025192842264,
+      "susp_ratio_avg": 0.03818311575002295,
+      "note": "建仓日剔除停牌与涨停（涨停无法买入）；跌停无法卖出未额外剔除"
+    },
+    "capacity": {
+      "adv_proxy_median_amount": 322718877.325,
+      "size_limit_at_10pct_participation": 2085326971.6038344,
+      "note": "以多头组成交额中位数作 ADV 代理，参与率 10% 时的规模上限（粗略）"
+    },
+    "base_cost_used": {
+      "commission": 0.00025,
+      "stamp_sell": 0.0005,
+      "transfer": 1e-05,
+      "slippage": 0.001
+    }
+  },
+  {
+    "name": "rev4_turn_pos20_amp",
+    "days": 3955,
+    "ic": {
+      "rank_ic_mean": 0.049937604547724244,
+      "hac_t": 18.111040211274975,
+      "boot_ci95": [
+        0.044111418807634105,
+        0.05595267148867051
+      ],
+      "hac_lag": 3
+    },
+    "segments": {
+      "train": {
+        "days": 2190,
+        "rank_ic_mean": 0.06920164356756954,
+        "hac_t": 19.26457146945046,
+        "boot_ci95": [
+          0.06260146578251827,
+          0.07631580308376819
+        ]
+      },
+      "valid": {
+        "days": 487,
+        "rank_ic_mean": 0.041354873256284466,
+        "hac_t": 5.730648023769345,
+        "boot_ci95": [
+          0.027240423227256564,
+          0.054326258536698785
+        ]
+      },
+      "test": {
+        "days": 405,
+        "rank_ic_mean": 0.020571208823634293,
+        "hac_t": 2.4286027286139498,
+        "boot_ci95": [
+          0.0009623515334925111,
+          0.04079801557260511
+        ]
+      }
+    },
+    "gross": {
+      "long_annual": 0.12962003208297565,
+      "long_sharpe": 0.6243592455717814,
+      "long_maxdd": -0.39332691724069013,
+      "ls_annual": 0.18240122547128185,
+      "ls_sharpe": 1.4229688676462204,
+      "ls_maxdd": -0.13467325077781833,
+      "nav_convention": "非重叠 3 日块（每 3 个交易日取一），年化因子 244/3",
+      "blocks": 1319
+    },
+    "cost": {
+      "low": {
+        "per_side_round_trip": 0.0019200000000000003,
+        "annual_drag": 0.26059967665650713,
+        "long_annual_gross": 0.12962003208297565,
+        "long_annual_net": -0.13097964457353145,
+        "long_sharpe_net": -0.630908284445109,
+        "long_maxdd_net": -0.9237169491571409
+      },
+      "base": {
+        "per_side_round_trip": 0.00302,
+        "annual_drag": 0.40990157474096434,
+        "long_annual_gross": 0.12962003208297565,
+        "long_annual_net": -0.2802815426579886,
+        "long_sharpe_net": -1.3500719735172857,
+        "long_maxdd_net": -0.9929864859763238
+      },
+      "high": {
+        "per_side_round_trip": 0.0051199999999999996,
+        "annual_drag": 0.6949324710840189,
+        "long_annual_gross": 0.12962003208297565,
+        "long_annual_net": -0.5653124390010431,
+        "long_sharpe_net": -2.723020834473259,
+        "long_maxdd_net": -0.9999283228680849
+      }
+    },
+    "bootstrap_ci": {
+      "long_annual_ci95": [
+        0.034011756729205235,
+        0.2221381989502641
+      ],
+      "long_annual_net_base_ci95": [
+        -0.37588981801175897,
+        -0.18776337579070015
+      ],
+      "ls_sharpe_ci95": [
+        1.0061137712341868,
+        1.8913759369228753
+      ],
+      "B": 2000,
+      "block_len": 10
+    },
+    "turnover": {
+      "avg_daily_top_decile": 0.5562663863057272,
+      "annual_round_trips": 135.72899825859744
+    },
+    "tradability": {
+      "limitup_ratio_avg": 0.010564257597016007,
+      "susp_ratio_avg": 0.017978470516687488,
+      "note": "建仓日剔除停牌与涨停（涨停无法买入）；跌停无法卖出未额外剔除"
+    },
+    "capacity": {
+      "adv_proxy_median_amount": 267050015.0,
+      "size_limit_at_10pct_participation": 1174419119.0635905,
+      "note": "以多头组成交额中位数作 ADV 代理，参与率 10% 时的规模上限（粗略）"
+    },
+    "base_cost_used": {
+      "commission": 0.00025,
+      "stamp_sell": 0.0005,
+      "transfer": 1e-05,
+      "slippage": 0.001
+    }
+  }
+]
