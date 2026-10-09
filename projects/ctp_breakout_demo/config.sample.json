@@ -1,0 +1,17 @@
+{
+  "_说明": "SimNow / CTP 连接配置样例（不含任何真实值）。把下列环境变量设为你自己的账号后即可运行 demo。",
+  "_环境变量": {
+    "Mai_SimNow_userid":     "必填。投资者代码 InvestorID（6 位数字），源码与仓库中不保存",
+    "Mai_SimNow_password":   "必填。登录密码。SimNow 注册后需先改密一次，交易通道才放行",
+    "Mai_SimNow_brokerid":   "选填，默认 9999（SimNow 固定）",
+    "Mai_SimNow_td_address": "选填，默认 tcp://182.254.243.31:30001（盘中；夜盘实测为 40001）",
+    "Mai_SimNow_md_address": "选填，默认 tcp://182.254.243.31:30011（盘中；夜盘实测为 40011）",
+    "Mai_SimNow_appid":      "选填，默认 simnow_client_test（SimNow 公开约定，非凭据）",
+    "Mai_SimNow_auth_code":  "选填，默认 16 个 0（SimNow 公开约定，非凭据）"
+  },
+  "_设置方式": {
+    "PowerShell_当前会话": "$env:Mai_SimNow_userid='<你的投资者代码>'; $env:Mai_SimNow_password='<你的密码>'",
+    "PowerShell_用户级持久": "[Environment]::SetEnvironmentVariable('Mai_SimNow_userid','<值>','User')",
+    "Linux_macOS": "export Mai_SimNow_userid=<值>; export Mai_SimNow_password=<值>"
+  }
+}

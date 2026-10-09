@@ -20,39 +20,43 @@ from time import sleep
 from vnpy_ctp.api import MdApi, TdApi
 
 
-def _load_password() -> str:
-    """从用户环境变量读取 SimNow 密码（兼容 password/passward 两种拼写）。"""
+def _env(names: tuple[str, ...], default: str = "") -> str:
+    """只从环境变量读取配置（不从注册表兜底：来源明确、可离线测试）。
+
+    用 SetEnvironmentVariable 设置的用户级变量需在**新开的终端**中才可见。
+    """
     import os
-    for key in ("Mai_SimNow_password", "Mai_SimNow_passward"):
+    for key in names:
         v = os.environ.get(key)
         if v:
             return v
-    # 新开终端才有该变量；从注册表兜底读取
-    try:
-        import winreg
-        with winreg.OpenKey(winreg.HKEY_CURRENT_USER, "Environment") as k:
-            for key in ("Mai_SimNow_password", "Mai_SimNow_passward"):
-                try:
-                    v, _ = winreg.QueryValueEx(k, key)
-                    if v:
-                        return v
-                except OSError:
-                    pass
-    except ImportError:
-        pass
-    raise RuntimeError("未找到 Mai_SimNow_password / Mai_SimNow_passward 环境变量")
+    return default
 
 
-# SimNow 模拟账号配置（端口随交易时段切换：盘中 30001/30011，夜盘实测为 40001/40011）
-# 本账号为用户自注册 SimNow（昵称 maimai，投资者代码 <INVESTOR_ID>）
+def _require_userid() -> str:
+    v = _env(("Mai_SimNow_userid", "Mai_SimNow_userID"))
+    if not v:
+        raise RuntimeError("缺少环境变量 Mai_SimNow_userid（InvestorID），参见 config.sample.json")
+    return v
+
+
+def _require_password() -> str:
+    v = _env(("Mai_SimNow_password", "Mai_SimNow_passward"))
+    if not v:
+        raise RuntimeError("缺少环境变量 Mai_SimNow_password，参见 config.sample.json")
+    return v
+
+
+# SimNow 模拟账号配置：全部取自环境变量，源码不含任何账号值
+# 端口随交易时段切换（盘中 30001/30011；夜盘实测为 40001/40011）
 SETTING = {
-    "userid":     "<INVESTOR_ID>",                      # 资金账号（InvestorID，6 位数字）
-    "password":   _load_password(),              # 登录密码（读自环境变量 Mai_SimNow_passward）
-    "brokerid":   "9999",                        # 经纪商代码（SimNow 固定 9999）
-    "td_address": "tcp://182.254.243.31:30001",  # 交易前置（盘中 30001；夜盘/另一套为 40001）
-    "md_address": "tcp://182.254.243.31:30011",  # 行情前置（盘中 30011；夜盘/另一套为 40011）
-    "appid":      "simnow_client_test",          # 产品名称（终端认证用，SimNow 通用）
-    "auth_code":  "0000000000000000",            # 授权编码（终端认证用，SimNow 通用 16 个 0）
+    "userid":     _require_userid(),                                     # 资金账号（InvestorID）
+    "password":   _require_password(),                                   # 登录密码
+    "brokerid":   _env(("Mai_SimNow_brokerid",), "9999"),                # 经纪商代码
+    "td_address": _env(("Mai_SimNow_td_address",), "tcp://182.254.243.31:30001"),
+    "md_address": _env(("Mai_SimNow_md_address",), "tcp://182.254.243.31:30011"),
+    "appid":      _env(("Mai_SimNow_appid",), "simnow_client_test"),     # 终端认证用
+    "auth_code":  _env(("Mai_SimNow_auth_code",), "0" * 16),             # 终端认证用
 }
 
 # 订阅的合约列表（须为当前挂牌月份；摘牌合约订阅无任何错误回报，只是收不到行情）

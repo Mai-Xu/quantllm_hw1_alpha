@@ -138,12 +138,12 @@ projects/alpha_mining_demo/：eval_factors.py 基于 vnpy.alpha（AlphaDataset +
 - 修正概念/实体：event-driven-architecture 补事件双发与 unregister 陷阱；offset-conversion 补 SHFE/INE CLOSE=平昨语义与 net 分支 volume_left 隐患；cta-template 补 TargetPosTemplate 回测/实盘分叉；factor-expression-ops 补完整算子族并链 alpha-dataset
 - index/overview 同步（实体页 9→13）；SimNow 连接线索记入 overview 下一步（当晚端口探测失败详情见会话）
 
-## [2026-09-28] dev | 用户自注册 SimNow 账号 <INVESTOR_ID> 全链路登录成功
-- 账号：昵称 maimai / 投资者代码 <INVESTOR_ID> / 经纪商 9999；密码读自用户环境变量 Mai_SimNow_passward（注意拼写为 passward，demo 兼容两种拼写 + 注册表兜底）
+## [2026-09-28] dev | SimNow 账号全链路登录成功（账号值已脱敏）
+- 账号：用户自注册 SimNow；投资者代码与密码均走环境变量（`Mai_SimNow_userid` / `Mai_SimNow_password`），源码与仓库不含任何值
 - 前置端口规律（重要）：30001/30011 与 40001/40011 随交易时段切换——09-24 夜盘 40001/40011 开、30001/30011 拒；09-28 盘中反过来。两 demo 已改回 30001/30011 并注明夜盘用 40001/40011
-- 实测（2026-09-28 10:16）：终端认证成功 → TD 登录成功（TradingDay=20260928）→ MD 登录并订阅 au2612/au2706/ag2612/rb2610/cu2612 持续推送
+- 实测（2026-09-28 10:16）：终端认证成功 → TD 登录成功→ MD 登录并订阅 au2612/au2706/ag2612/rb2610/cu2612 持续推送
 - 踩坑：① 首次注册未改密时 TD 报 ErrorID=3「不合法的登录」而 MD 可登录（SimNow 改密规则主要卡交易通道）；② 环境变量名拼写 passward；③ 前置端口按时段切换，写死一组会在另一时段连不上
-- demo 账号 000300（老师示范）已替换为用户账号；密码不入库，统一走环境变量
+- 老师示范账号（000300）已替换为用户自己的账号；密码不入库
 
 ## [2026-09-28] dev | ctp_open_close_demo：超价开 + 超价平各一次（SimNow 实测成交）
 - projects/ctp_open_close_demo/demo.py：超价买开（卖一+5跳）→ 成交回报触发超价卖平（买一-5跳），au2612 一手开平闭环
