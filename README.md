@@ -47,7 +47,7 @@ vnpy 4.4.0 / vnpy_ctp 6.7.11.4 / vnpy_ctastrategy 1.4.1 全文精读，落到 wi
 踩坑记录（前置端口随交易时段切换、上期所平今 `CombOffsetFlag='3'`、账户级成交回报过滤等）
 在 `wiki/code/ctp-*.md`。
 
-### 3. LLM 驱动因子挖掘（五方向）
+### 3. LLM 驱动因子挖掘（五方向，28 轮约 431 个候选）
 
 流水线：LLM 生成表达式 → `vnpy.alpha` 评估 → 读指标反思 → 迭代；
 防过拟合纪律：预注册协议、噪声锚点、试验台账、test 隐藏、lockbox 冻结、三票制留存。
@@ -60,8 +60,21 @@ vnpy 4.4.0 / vnpy_ctp 6.7.11.4 / vnpy_ctastrategy 1.4.1 全文精读，落到 wi
 | GAP 跳空 | GAP_DIFF4_TURN | 0.29 | 0.20 |
 | VOLPOS 波动位置 | REV4_TURN_HIGHPOS | 0.28 | 0.15 |
 
-完整研究报告（含图表）：`projects/alpha_mining_demo/runs/final/report.html`
-指标表：`runs/final/performance_report.md` ｜ 冻结决策：`runs/final/retention.md`
+**研究纪律与可复核材料**：
+
+| 材料 | 路径 | 内容 |
+|---|---|---|
+| 研究报告 | `projects/alpha_mining_demo/runs/final/report.html` | 含叙述与图表 |
+| 指标表 | `runs/final/performance_report.md` | 分段 IC、分组、分年 |
+| 冻结清单 | `runs/final/freeze.md` | 数据指纹 SHA-256、股票池、复权口径、信号时点、停止规则 + 时序证据 |
+| 试验台账 | `runs/attempt_ledger.md` | 全部 28 轮候选与证伪支线（含已丢失产物的如实披露） |
+| 摩擦报告 | `runs/final/friction_report.md` | 毛/净收益、三档费用+印花税+滑点、涨跌停停牌、容量、融券约束、HAC/区块 bootstrap |
+| 复现说明 | `projects/alpha_mining_demo/REPRODUCE.md` | 依赖锁定、实际命令、退出码、脱敏日志 |
+| 留存决策 | `runs/final/retention.md` | 三票制（冻结于终局报告之前） |
+
+> **口径提醒**：label 为 T+1→T+3 的重叠收益，年化与回撤按**非重叠 3 日块**计算，
+> 显著性用 HAC(Newey–West) 与平稳区块 bootstrap。多头组合扣费后（base 情景）
+> 年化为负——IC 类指标与可落袋收益是两个口径，详见摩擦报告。
 
 > 五方向合流结论：A 股 T+3 反转的每个调制维度都在样本内成立、样本外衰减；
 > 可预测性存在于「方向 × 状态」交互项，而非任何一阶矩。
