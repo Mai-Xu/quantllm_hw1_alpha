@@ -182,3 +182,25 @@ projects/alpha_mining_demo/：eval_factors.py 基于 vnpy.alpha（AlphaDataset +
 - 发布：git init + 初始提交 68513df（165 文件）→ 公开仓库 https://github.com/Mai-Xu/quantllm_hw1_alpha
 - 认证：winget 安装 gh 2.102.0；网络走本机代理 127.0.0.1:7890；账号 Mai-Xu（HTTPS 协议）
 - 机密核查：入库文件无密码字面量；SimNow 密码仍走环境变量 Mai_SimNow_passward
+
+## [2026-10-09] dev | 按评审反馈加固：可验证开平闭环 + 凭据清理出源码与历史
+
+针对「开平代码只能证明平仓单已发出」与「源码/历史含 UserID」两项反馈的整改：
+
+- **交易闭环重写**（projects/ctp_open_close_demo/demo.py）：
+  1) 开仓意图持久化——发单前写 `evidence/journal_*.jsonl`，崩溃可复原
+  2) 归属收紧——委托按 FrontID+SessionID+登记 OrderRef 三段匹配；成交额外要求 OrderSysID 自洽
+     且方向一致，他会话成交**明确拒收并计数**（早期版本用 OrderRef 范围比较，不严密）
+  3) 平仓以**归属后成交数量**判定，不再以「已发出」判定
+  4) 终态校验——`reqQryInvestorPosition` 查持仓归零 + 本会话无活动委托
+  5) fail-closed——断线/拒单/超时/未收敛一律非 0 退出码（0/2/3/4/5/6/7 语义见 README）
+- **离线测试** 17 例（tests/test_offline.py，不联网）：三段归属、OrderSysID 自洽与他会话拒收、
+  方向一致性、终态校验四条失败路径、脱敏、缺配置 fail-closed
+- **凭据清理**：三个 demo 与 log 中的 InvestorID 全部移出，改为环境变量
+  （`Mai_SimNow_userid` / `Mai_SimNow_password`）；新增无值 `config.sample.json`；
+  去掉注册表兜底（来源明确、可离线测试）
+- **git 历史重写**：`filter-branch` 清除全部历史中的 ID 与密码字面量，删除 refs/original 与 reflog 后 gc；
+  复核 `git log --all -S` 三个敏感串均为空
+- **实测**：2026-10-09 12:42 于午间休市时段运行，程序在无行情下按预期以退出码 5 fail-closed 收场
+  （非误报成功），证据 `evidence/journal_20261009_124221.jsonl`（账号字段已脱敏为 `******`）
+- 待办：下午/夜盘时段复跑以取得 0 退出码的完整闭环证据；因子研究侧另行补 HAC/成本等
