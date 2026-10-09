@@ -56,6 +56,7 @@ pip install alphalens-reloaded # vnpy.alpha 顶层 import 需要
 | 5 | `python final_report.py` | `0` | 指标表 + 13 张图 | `runs/final/report_log.txt` |
 | 6 | `python friction_report.py` | `0` | 摩擦与显著性报告（评审后新增） | `runs/final/friction_log.txt` |
 | 7 | `python tests/test_offline.py`（ctp_open_close_demo） | `0` | **17/17 passed**，不联网 | 控制台 |
+| 8 | `python demo.py`（ctp_open_close_demo，13:33 盘中） | **`0`** | **闭环验证 PASS**：平仓成交 + 持仓归零 + 无活动委托 | `evidence/journal_20261009_133314.jsonl` |
 
 观察到的**非零退出码**（同样如实记录）：
 
@@ -90,7 +91,9 @@ cd projects/ctp_open_close_demo
 
 ## 6. 未验证项（不得表述为「已运行通过」）
 
-- **交易闭环的 0 退出码尚未取得**：多次运行均在非交易时段（午间休市/夜盘前），
-  以退出码 5 或 3 fail-closed 收场。**闭环代码已通过 17 项离线测试，但完整实盘闭环待交易时段复跑**。
+- ~~交易闭环的 0 退出码尚未取得~~ **已于 2026-10-09 13:33（盘中）取得**：
+  `demo.py` 退出码 `0`，证据 `../ctp_open_close_demo/evidence/journal_20261009_133314.jsonl`
+  （开仓成交 @908.66、平今成交 @908.74、au2612 持仓查询为 0、本会话无活动委托）。
+  同日 12:42（午间休市）的一次运行以退出码 `5` fail-closed 收场，同样留档为对照。
 - `ctp_demo` / `ctp_breakout_demo` 的账号配置已改为环境变量，**改后未重新实盘运行**（仅 `py_compile` 通过）。
 - 复权口径未核实（见 `runs/final/freeze.md` §3）。

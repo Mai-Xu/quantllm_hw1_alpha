@@ -1,0 +1,15 @@
+{"ts": "2026-10-09T13:33:14.398", "run_id": "20261009_133314", "event": "run_start", "instrument": "au2612", "volume": 1, "userid": "******", "brokerid": "9999", "td_address": "tcp://182.254.243.31:30001"}
+{"ts": "2026-10-09T13:33:16.962", "run_id": "20261009_133314", "event": "td_login", "frontid": 1, "sessionid": 2091207932, "userid": "******"}
+{"ts": "2026-10-09T13:33:37.740", "run_id": "20261009_133314", "event": "settlement_confirmed"}
+{"ts": "2026-10-09T13:33:38.258", "run_id": "20261009_133314", "event": "order_intent", "tag": "open", "order_ref": 1, "instrument": "au2612", "direction": "0", "offset": "0", "price": 908.74, "volume": 1}
+{"ts": "2026-10-09T13:33:38.360", "run_id": "20261009_133314", "event": "order_update", "order_ref": 1, "sysid": "", "status": "a", "traded": 0, "status_msg": "报单已提交"}
+{"ts": "2026-10-09T13:33:38.361", "run_id": "20261009_133314", "event": "order_update", "order_ref": 1, "sysid": "398916", "status": "a", "traded": 0, "status_msg": "报单已提交"}
+{"ts": "2026-10-09T13:33:38.398", "run_id": "20261009_133314", "event": "order_update", "order_ref": 1, "sysid": "398916", "status": "0", "traded": 1, "status_msg": "全部成交报单已提交"}
+{"ts": "2026-10-09T13:33:38.400", "run_id": "20261009_133314", "event": "trade", "order_ref": 1, "volume": 1, "price": 908.66, "offset": "0", "trade_id": "258545", "tag": "open"}
+{"ts": "2026-10-09T13:33:38.400", "run_id": "20261009_133314", "event": "order_intent", "tag": "close", "order_ref": 2, "instrument": "au2612", "direction": "1", "offset": "3", "price": 908.52, "volume": 1}
+{"ts": "2026-10-09T13:33:38.592", "run_id": "20261009_133314", "event": "order_update", "order_ref": 2, "sysid": "", "status": "a", "traded": 0, "status_msg": "报单已提交"}
+{"ts": "2026-10-09T13:33:38.593", "run_id": "20261009_133314", "event": "order_update", "order_ref": 2, "sysid": "398924", "status": "a", "traded": 0, "status_msg": "报单已提交"}
+{"ts": "2026-10-09T13:33:38.594", "run_id": "20261009_133314", "event": "order_update", "order_ref": 2, "sysid": "398924", "status": "0", "traded": 1, "status_msg": "全部成交报单已提交"}
+{"ts": "2026-10-09T13:33:38.595", "run_id": "20261009_133314", "event": "trade", "order_ref": 2, "volume": 1, "price": 908.74, "offset": "3", "trade_id": "258549", "tag": "close"}
+{"ts": "2026-10-09T13:33:38.915", "run_id": "20261009_133314", "event": "position_query", "rows": [{"instrument": "au2612", "direction": "2", "position": 0, "yd": 0, "today": 0}]}
+{"ts": "2026-10-09T13:33:39.021", "run_id": "20261009_133314", "event": "verify_result", "passed": true, "reason": "平仓成交 + 持仓归零 + 无活动委托", "open_filled": true, "close_filled": true, "active_orders": [], "positions": [], "foreign_trade_rejected": 0}

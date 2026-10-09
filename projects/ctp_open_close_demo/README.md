@@ -80,6 +80,29 @@ python tests/test_offline.py
 覆盖：委托三段归属、成交 OrderSysID 自洽与他会话拒收、方向一致性、
 终态校验四种失败路径、脱敏、缺配置 fail-closed。预期 **17/17 passed**。
 
+## 实测证据（2026-10-09）
+
+| 时间 | 场景 | 退出码 | 结果 |
+|---|---|---|---|
+| 12:42 | 午间休市（无行情） | `5` | 等待开仓超时 → **fail-closed 生效**，未误报成功 |
+| 13:33 | 盘中 | **`0`** | **闭环 PASS**：平仓成交 + 持仓归零 + 无活动委托 |
+
+盘中成功运行的证据链（`evidence/journal_20261009_133314.jsonl`）：
+
+```
+order_intent(open, ref=1, @908.74)
+  → order_update(sysid=398916, 状态=全部成交, traded=1)
+  → trade(ref=1, 买1手 @908.66, offset=0)          # 开仓成交
+  → order_intent(close, ref=2, @908.52, offset=3)  # 平今
+  → order_update(sysid=398924, 状态=全部成交, traded=1)
+  → trade(ref=2, 卖1手 @908.74, offset=3)          # 平仓成交
+  → position_query(au2612 多方向 position=0)        # 持仓归零
+  → verify_result(passed=true)
+```
+
+要点：委托回报带回 `OrderSysID`（398916/398924），成交据此完成自洽归属；
+平仓用 `CombOffsetFlag=3`（平今）成交回报 `offset=3` 印证。
+
 ## 证据（脱敏）
 
 运行后 `evidence/journal_<RUN_ID>.jsonl` 记录逐事件：
