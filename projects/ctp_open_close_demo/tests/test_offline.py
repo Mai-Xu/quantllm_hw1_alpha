@@ -158,8 +158,11 @@ def test_active_orders_ignores_terminal_status():
 # ---------------------------------------------------------------- D. 脱敏
 
 def test_mask_hides_value():
-    assert demo.mask("<INVESTOR_ID>") == "******"
-    assert "<INVESTOR_ID>" not in demo.mask("<INVESTOR_ID>")
+    """脱敏：长度保留、原值不可见（用中性示例值，不含任何真实账号）。"""
+    sample = "123456"
+    masked = demo.mask(sample)
+    assert masked == "******"
+    assert sample not in masked
     assert demo.mask("") == ""
 
 
