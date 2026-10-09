@@ -8,6 +8,25 @@ MainEngine/EventEngine/CtpGateway，直接演示 CTP 柜台交互的最原始形
 2. **订阅合约行情**：登录成功后自动 `subscribeMarketData`
 3. **打印行情推送**：`onRtnDepthMarketData` 逐条打印最新价/买卖一档/成交量/持仓量
 
+## 配置（源码不含任何账号）
+
+凭据只从**环境变量**读取（不从注册表兜底），无值样例见 `config.sample.json`：
+
+| 变量 | 必填 | 说明 |
+|---|---|---|
+| `Mai_SimNow_userid` | ✅ | 投资者代码 InvestorID |
+| `Mai_SimNow_password` | ✅ | 登录密码 |
+| `Mai_SimNow_brokerid` | — | 默认 `9999` |
+| `Mai_SimNow_td_address` | — | 默认 `tcp://182.254.243.31:30001`（盘中；夜盘实测 40001） |
+| `Mai_SimNow_md_address` | — | 默认 `tcp://182.254.243.31:30011`（盘中；夜盘实测 40011） |
+
+```powershell
+$env:Mai_SimNow_userid = '<你的投资者代码>'
+$env:Mai_SimNow_password = '<你的密码>'
+```
+
+缺 `userid`/`password` 时脚本以退出码 2 终止（fail-closed）。
+
 ## 运行
 ```bash
 pip install vnpy_ctp   # 已安装 6.7.11.x 即可

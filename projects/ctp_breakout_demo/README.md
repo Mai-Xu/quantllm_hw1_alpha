@@ -8,12 +8,35 @@ API（`vnpy_ctp.api`），不经过 vnpy 框架层。
 2. **实现策略逻辑**：行情价格向上突破阈值时自动限价开多 1 手（只发一单，无撤单/仓位管理）
 3. **打印交易回报**：`onRtnOrder`（委托状态流）/ `onRspOrderInsert`（场内拒单）/ `onRtnTrade`（成交）
 
+## 配置（源码不含任何账号）
+
+凭据只从**环境变量**读取（不从注册表兜底），无值样例见 `config.sample.json`：
+
+| 变量 | 必填 | 说明 |
+|---|---|---|
+| `Mai_SimNow_userid` | ✅ | 投资者代码 InvestorID |
+| `Mai_SimNow_password` | ✅ | 登录密码 |
+| `Mai_SimNow_brokerid` | — | 默认 `9999` |
+| `Mai_SimNow_td_address` | — | 默认 `tcp://182.254.243.31:30001`（盘中；夜盘实测 40001） |
+| `Mai_SimNow_md_address` | — | 默认 `tcp://182.254.243.31:30011`（盘中；夜盘实测 40011） |
+
+```powershell
+$env:Mai_SimNow_userid = '<你的投资者代码>'
+$env:Mai_SimNow_password = '<你的密码>'
+```
+
+缺 `userid`/`password` 时脚本以退出码 2 终止（fail-closed）。
+
 ## 运行
 ```bash
 python demo.py     # 策略参数（合约/方向/阈值偏移/手数）直接改 demo.py 顶部常量
 ```
 > 验证下单链路时，可把 `TRIGGER_OFFSET` 临时改为负值（如 -0.5），阈值低于现价，
 > 首 tick 即触发，无需等待真实突破。
+
+> **范围说明**：本 demo 只证明「突破委托可发出、可成交」，**不校验平仓成交与最终空仓**。
+> 需要可复核的开平闭环（意图持久化 / 成交归属收紧 / 持仓归零校验 / fail-closed 退出码）
+> 请看 [`../ctp_open_close_demo`](../ctp_open_close_demo)。
 
 ## 实测记录（2026-09-16 14:34，SimNow）
 ```
